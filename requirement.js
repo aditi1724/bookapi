@@ -23,9 +23,9 @@ Publications
 ------APIs----------
 BOOKS
  - GET
-    - to get all books
-    - to get specific books
-    - to get a list of all books based on category
+    - to get all books        ..........................  (D)
+    - to get specific books   ..........................  (D)
+    - to get a list of all books based on category  ....  (D)
     - to get a list of all books based on author
 
  -POST
