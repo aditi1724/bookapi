@@ -26,7 +26,7 @@ BOOKS
     - to get all books        ..........................  (D)
     - to get specific books   ..........................  (D)
     - to get a list of all books based on category  ....  (D)
-    - to get a list of all books based on author
+    - to get a list of all books based on author 
 
  -POST
     - to add new book
@@ -41,8 +41,8 @@ BOOKS
 
 AUTHORS
  -GET
-   -to get all authors
-   -to get specific authors
+   -to get all authors      ..........................  (D)
+   -to get specific authors 
    -to get a list of all authors based on book
  
  -POST
@@ -57,7 +57,7 @@ AUTHORS
 
 PUBLICATIONS
  -GET
-   -to get all publication
+   -to get all publication  
    - to get specific publication
    -to get a list of all publication based on book
 

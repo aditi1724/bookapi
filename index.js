@@ -57,8 +57,15 @@ OurAPP.get("/book/c/:category", (req, res) => {
     return res.json({ book : getBook });
 });
 
-
-
+// Route            - /author
+// Des              - to get all authors 
+// Access           - Public 
+// Method           - GET
+// Parameter/params - none
+// Body             - none
+OurAPP.get("/author", (req, res) => {
+    return res.json({ authors: Database.Author});
+});
 
 
 
