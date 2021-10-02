@@ -53,3 +53,5 @@ let Publication = [
         books: [],
     },
 ];
+
+module.exports = { Book, Author, Publication };
