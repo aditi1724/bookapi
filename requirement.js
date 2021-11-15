@@ -32,7 +32,7 @@ BOOKS
     - to add new book         ..........................  (D)
  
  -PUT
-    - to update book details
+    - to update book details      ..........................  (D)
     - to update/add new author
  
  -DELETE
