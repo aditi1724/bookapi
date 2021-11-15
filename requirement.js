@@ -29,7 +29,7 @@ BOOKS
     - to get a list of all books based on author 
 
  -POST
-    - to add new book
+    - to add new book         ..........................  (D)
  
  -PUT
     - to update book details
@@ -46,7 +46,7 @@ AUTHORS
    -to get a list of all authors based on book
  
  -POST
-   - to add new book
+   - to add new author     ..........................  (D)
    - to update /add new book
  
  -PUT
@@ -62,7 +62,7 @@ PUBLICATIONS
    -to get a list of all publication based on book
 
  -POST
-   - to add new publication
+   - to add new publication    ..........................  (D)
 
  -PUT
    -update publication details
