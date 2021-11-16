@@ -13,6 +13,42 @@ Router.get("/author", async (req, res) => {
 });
 
 
+//Route           /author/:ID
+//Description      to get specific author based on id
+//Access           PUBLIC
+//Parameter        ID
+//Method           GET
+
+Router.get("/:ID", async (req, res) => {
+  const getSpecificAuthor = await AuthorModel.findOne({ id: req.params.ID });
+  //if  author not present
+  if (!getSpecificAuthor) {
+    return res.json({ error: "Author not found" });
+  }
+
+  return res.json(getSpecificAuthor);
+});
+
+
+//Route           /author/book/:isbn
+//Description      to get list of authors based on a book
+//Access           PUBLIC
+//Parameter        isbn
+//Method           GET
+
+Router.get("/book/:isbn", async (req, res) => {
+  const getSpecificAuthor = await AuthorModel.find({ books: req.params.isbn });
+  //if  author not present
+  if (!getSpecificAuthor) {
+    return res.json({
+      error: `Authors of book(${req.params.isbn}) not found`,
+    });
+  }
+
+  return res.json(getSpecificAuthor);
+});
+
+
 // Route            - /author/new
 // Des              - to add new author
 // Access           - Public 
@@ -28,40 +64,45 @@ Router.post("/author/new", (req,res) => {
 
 
 // TODO Student task
-//Route             - /author/update
+//Route             - /author/update/:id
 // Des              - update any details of the author
 // Access           - Public 
 // Method           - PUT
 // Parameter/params - id
 //params in the req.body are always in string format
-Router.put(' ' , (req,res) => {
-    const {updateAuthor} = req.body;
-    const {id} = req.params;
+Router.put("/update/:id", async (req, res) => {
+    const { id } = req.params;
+    const { authorName } = req.body;
+    const UpdateAuthor = await AuthorModel.findOneAndUpdate(
+      {
+        id: parseInt(id),
+      },
+      {
+        name: authorName,
+      },
+      {
+        new: true,
+      }
+    );
+    return res.json({ author: UpdateAuthor, message: "Author name updated" });
+  });
 
-    const author = Database.Author.map((author) => {
-        if(author.id === parseInt(id)){
-            return {...author, ...updateAuthor };
-        }
-        return author;
-    });
-    return res.json(author);
-});
+
 
 //Route             - /author/delete
 // Des              - to delete an author 
 // Access           - Public 
 // Method           - DELETE
 // Parameter/params - id
-Router.delete("/author/delete/:id", (req, res) => {
-    const {id} = req.params;
-
-    const filteredAuthors = Database.Author.filter(
-        (author) => author.id !== parseInt(id)
-    );
-
-    Database.Author = filteredAuthors;
-
-    return res.json(Database.Author);
+Router.delete("/delete/:id", async (req, res) => {
+  const { id } = req.params;
+  const updatedAuthorDatabase = AuthorModel.findOneAndDelete({
+    id: parseInt(id),
+  });
+  return res.json({
+    authors: updatedAuthorDatabase,
+    message: `author (id:${id}) successfully deleted`,
+  });
 });
 
 

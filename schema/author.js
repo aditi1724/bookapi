@@ -2,9 +2,16 @@ const mongoose = require("mongoose");
 
 //Author Schema
 const AuthorSchema = mongoose.Schema({
-    id: Number,
+    id: {
+        type: Number,
+        require: true,
+    
+    },
 
-    name: String,
+    name:{
+        type:String,
+        require:true,
+    },
    
     books: [String],
 });

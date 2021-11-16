@@ -57,6 +57,25 @@ Router.get("/book/c/:category", async (req, res) => {
 });
 
 
+//Route           /book/author/:id
+//Description      to get list of books based on author
+//Access           PUBLIC
+//Parameter        id
+//Method           GET
+
+Router.get("/author/:id", async (req, res) => {
+  const getSpecificBook = await BookModel.find({ authors: req.params.id });
+  //if  book not present
+  if (!getSpecificBook) {
+    return res.json({
+      error: `Books of author(author id:${req.params.id}) not found`,
+    });
+  }
+
+  return res.json(getSpecificBook);
+});
+
+
 // Route            - /book/new
 // Des              - to add new book
 // Access           - Public 
